@@ -1,17 +1,26 @@
 export class ManifacturerUpdateAssetModel {
-    constructor(obj?:any){
-        if(obj!= null){
-            Object.keys(obj).forEach(key => {
-                this[key] = obj[key];
-            });
+        constructor(obj?:any){
+            if(obj!= null){
+                Object.keys(obj).forEach(key => {
+                    this[key] = obj[key];
+                });
+            }
+            else{
+    
+            }
         }
-        else{
-
-        }
+        CustomerOwner: string ;
+        MfgDate: string ;
+        RetailerOwner: string ;
+        assetid:string ;
+        assetname: string ;
+        boxid: string ;
+        consignmentid: string ;
+        customerphone: string ;
+        distowner: string ;
+        manuowner: string ;
+        ownerid: string ;
+        ownerrole: string ;
+        qrid: string ;
+        wholeowner: string;
     }
-    assetid:string ;
-    assetname: string ;
-    manuowner: string ;
-    ownerrole: string ;
-    distowner: string ;
-}

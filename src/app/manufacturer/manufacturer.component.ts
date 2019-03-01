@@ -20,21 +20,6 @@ export class ManufacturerComponent implements OnInit {
   public submitted:boolean = false;
 
   public assets : Array<APIResponseModel> = [];
-
-  sampleAsset : AssetModel = new AssetModel({
-    assetid :2,
-    assetname : "Diovan",
-    qrid:"e1nbf47ab7hahb313baB26fhsbh37rh",
-    boxid : "B176",
-    consignmentid:"C884",
-    manuowner:"Novartis",
-    MfgDate:"02/02/2019"
-  });
-
-
-  manifacturerUpdateAssetModel : ManifacturerUpdateAssetModel = new ManifacturerUpdateAssetModel();
-
-
   
 
   constructor(
@@ -47,13 +32,18 @@ export class ManufacturerComponent implements OnInit {
     this.assetInEdit = this.generateAssetFormGroup();
     this.updateAssetInEdit = this.generateUpdateAssetFormGroup();
     this.getAssets();
-    this.assets.push({Key:"Test","Record":this.sampleAsset})
-    
+   
   }
 
   getAssets(){
     this.apiService.getManifacturerSaleHistory().subscribe((data) => {
-         this.assets = data;  
+      console.log(data);
+      var text = data.split("[")[1].split("]")[0];
+     // alert(JSON.parse("["+text+"]"));
+      this.assets=JSON.parse("["+text+"]");
+      console.log(this.assets);
+
+        // this.assets = data;  
     },
     (err) => {
       console.log(err);
@@ -98,7 +88,8 @@ export class ManufacturerComponent implements OnInit {
       assetname: new FormControl("", [Validators.required]),
       manuowner: new FormControl("", [Validators.required]),
       ownerrole: new FormControl(""),
-      distowner: new FormControl("", [Validators.required])
+      distowner: new FormControl("", [Validators.required]),
+      consignmentid : new FormControl("")
 
     });
   }
@@ -109,7 +100,8 @@ export class ManufacturerComponent implements OnInit {
       assetname: new FormControl(data.assetname, [Validators.required]),
       manuowner: new FormControl(data.manuowner, [Validators.required]),
       ownerrole: new FormControl(data.ownerrole),
-      distowner: new FormControl("", [Validators.required])
+      distowner: new FormControl("", [Validators.required]),
+      consignmentid: new FormControl(data.consignmentid)
     });
   }
 
@@ -134,11 +126,12 @@ export class ManufacturerComponent implements OnInit {
   }
 
   updateAsset(){
-    this.updateAssetModel.assetid = this.assetInEdit.get("assetid").value;
-    this.updateAssetModel.assetname = this.assetInEdit.get("assetname").value;
-    this.updateAssetModel.manuowner = this.assetInEdit.get("manuowner").value;
-    this.updateAssetModel.ownerrole= this.assetInEdit.get("ownerrole").value;
-    this.updateAssetModel.distowner = this.assetInEdit.get("distowner").value;
+    this.updateAssetModel.assetid = this.updateAssetInEdit.get("assetid").value;
+    this.updateAssetModel.assetname = this.updateAssetInEdit.get("assetname").value;
+    this.updateAssetModel.manuowner = this.updateAssetInEdit.get("manuowner").value;
+    this.updateAssetModel.ownerrole= this.updateAssetInEdit.get("ownerrole").value;
+    this.updateAssetModel.distowner = this.updateAssetInEdit.get("distowner").value;
+    this.updateAssetModel.consignmentid = this.updateAssetInEdit.get("consignmentid").value;
     this.apiService.updateAssetManifacturer(this.updateAssetModel).subscribe((data) => {
       this.submitted = false;   
       this.toastr.success('ASSET UPDATED SUCCESSFULLY');     
@@ -164,7 +157,7 @@ export class ManufacturerComponent implements OnInit {
     this.asset.boxid = this.assetInEdit.get("boxid").value;
     this.asset.consignmentid = this.assetInEdit.get("consignmentid").value;
     this.asset.manuowner = this.assetInEdit.get("manuowner").value;
-    this.asset.ownerrole= this.assetInEdit.get("OwnerRole").value;
+    //this.asset.ownerrole= this.assetInEdit.get("ownerrole").value;
     this.asset.MfgDate = this.assetInEdit.get("MfgDate").value;
   }
 

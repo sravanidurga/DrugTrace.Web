@@ -1,9 +1,9 @@
 <h3>Distributor</h3>
 <br>
 <div class="row">
-  <div class="col-md-2">
+  <!-- <div class="col-md-2">
     <button class="btn btn-dark" data-toggle="modal" data-target="#transferAssetModal">Update Asset</button>
-  </div>
+  </div> -->
   <div class="col-md-2">
   </div>
   <div class="col-md-8"></div>
@@ -22,29 +22,21 @@
           <th scope="col">Consignment ID</th>
           <th scope="col">Owner</th>
           <th scope="col">Mfg Date</th>
-          <th scope="col">Status</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Lymparza</td>
-          <td>B26fhsbh37rh41nbf47ab7hahb313ba</td>
-          <td>B126</td>
-          <td>C432</td>
-          <td>AstraZeneca</td>
-          <td>14/05/2018</td>
-          <td>Active</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Diovan</td>
-          <td>e1nbf47ab7hahb313baB26fhsbh37rh</td>
-          <td>B176</td>
-          <td>C884</td>
-          <td>Novartis</td>
-          <td>02/02/2019</td>
-          <td>Active</td>
+        <tr *ngFor="let asset of assets">
+          <th scope="row">{{asset.Record.assetid}}</th>
+          <td>{{asset.Record.assetname}}</td>
+          <td>{{asset.Record.qrid}}</td>
+          <td>{{asset.Record.boxid}}</td>
+          <td>{{asset.Record.consignmentid}}</td>
+          <td>{{asset.Record.distowner}}</td>
+          <td>{{asset.Record.MfgDate}}</td>          
+        <td>
+            <button class="btn btn-dark" data-toggle="modal" data-target="#transferAssetModal" (click)="generateUpdateAssetDetails(asset)">Update Asset</button>
+        </td>
         </tr>
       </tbody>
     </table>
@@ -61,31 +53,32 @@
         </button>
       </div>
       <div class="modal-body">
+          <form class="sc-form" [formGroup]="updateAssetInEdit">
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Asset #</div>
-          <div class="col-md-5"><input type="text" id="assetId" class="form-control" disabled /></div>
+          <div class="col-md-5"><input type="text" id="assetId" class="form-control" formControlName="assetid"  disabled/></div>
           <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Asset Name</div>
-          <div class="col-md-5"><input type="text" id="assetName" class="form-control" disabled /></div>
+          <div class="col-md-5"><input type="text" id="assetName" class="form-control" formControlName="assetname" disabled/></div>
           <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Owner</div>
-          <div class="col-md-5"><input type="text" id="ownerId" class="form-control" disabled /></div>
+          <div class="col-md-5"><input type="text" id="ownerId" class="form-control"formControlName="manuowner" disabled /></div>
           <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Owner Role</div>
-          <div class="col-md-5"><input type="text" id="ownerRole" class="form-control" disabled /></div>
+          <div class="col-md-5"><input type="text" id="ownerRole" class="form-control" formControlName="ownerrole" disabled /></div>
           <div class="col-md-3"></div>
         </div>
         <br>
@@ -93,19 +86,20 @@
           <div class="col-md-1"></div>
           <div class="col-md-3">Wholesaler</div>
           <div class="col-md-5">
-            <select id="distList" class="form-control">
+            <select id="distList" class="form-control" formControlName="wholeowner">
               <option>Select Wholesaler</option>
-              <option>WholeSaler1</option>
-              <option>WholeSaler2</option>
-              <option>WholeSaler3</option>
+              <option>prabhu</option>
+              <option>nitesh</option>
+              <option>sai</option>
             </select>
           </div>
           <div class="col-md-3"></div>
         </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-dark">Transfer Asset</button>
+        <button type="button" class="btn btn-dark" [attr.disabled]="updateAssetInEdit.invalid ? true : null" (click)="updateAsset()">Transfer Asset</button>
       </div>
     </div>
   </div>

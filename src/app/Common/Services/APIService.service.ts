@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { AssetModel } from '../Models/AssetModel';
 import { APIResponseModel } from '../Models/APIResponseModel';
 import { ManifacturerUpdateAssetModel } from '../Models/ManifacturerUpdateAssetModel';
+import "rxjs/add/operator/map";
 
 
 @Injectable()
@@ -11,11 +12,11 @@ export class APIService {
     constructor(private httpClient: HttpClient) { }
     
 
-    getManifacturerSaleHistory(): Observable<Array<APIResponseModel>> {
+    getManifacturerSaleHistory(): Observable<any> {
         var params = new HttpParams()
          params = params.append('peer', 'peer0.manu.example.com')
-         params = params.append('args', '')
-        return this.httpClient.get<Array<APIResponseModel>>('salehistory_manu', { params: params })
+         params = params.append('args', JSON.stringify(['sravani']))
+        return this.httpClient.get<any>('SaleHistory_Manu', { params: params });
     }
 
     createAssetManifacturer(asset:AssetModel): Observable<string> {
@@ -23,7 +24,7 @@ export class APIService {
         var params = new HttpParams()
         // params = params.append('provider', provider)
         // params = params.append('isEdit', isEdit.toString())
-        var body = { "peers": [], "args":[asset.assetname,asset.qrid,asset.boxid,asset.consignmentid,asset.manuowner,asset.MfgDate.toString()]}
+        var body = { "peers": ['peer0.manu.example.com'], "args":[asset.assetname,asset.qrid,asset.boxid,asset.consignmentid,asset.manuowner,asset.MfgDate.toString()]}
         return this.httpClient.post<string>('manu_creation', body);
     }
 
@@ -32,13 +33,31 @@ export class APIService {
         var params = new HttpParams()
         // params = params.append('provider', provider)
         // params = params.append('isEdit', isEdit.toString())
-        var body = { "peers": [], "args":[asset.manuowner,asset.distowner,""]}
-        return this.httpClient.post<string>('manu_creation', body);
+        var body = { "peers": ['peer0.manu.example.com'], "args":[asset.distowner,asset.manuowner,asset.consignmentid]}
+        console.log(body);
+        return this.httpClient.post<string>('manu_saletransaction', body);
     }
 
     
+    
+
+    getDistributorSaleHistory(): Observable<any> {
+        var params = new HttpParams()
+         params = params.append('peer', 'peer0.manu.example.com')
+         params = params.append('args', JSON.stringify(['prabhu']))
+        return this.httpClient.get<any>('SaleHistory_Dist', { params: params });
+    }
 
 
+    updateAssetDistributor(asset:AssetModel): Observable<string> {
+        
+        var params = new HttpParams()
+        // params = params.append('provider', provider)
+        // params = params.append('isEdit', isEdit.toString())
+        var body = { "peers": ['peer0.manu.example.com'], "args":[asset.wholeowner,asset.distowner,asset.consignmentid]}
+        console.log(body);
+        return this.httpClient.post<string>('dist_sale_transaction', body);
+    }
 
 
 
