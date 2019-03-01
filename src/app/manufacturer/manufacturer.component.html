@@ -1,0 +1,198 @@
+<h3>Manufacturer</h3>
+<br>
+<div class="row">
+  <div class="col-md-2">
+    <button class="btn btn-dark" data-toggle="modal" data-target="#assetModal">Create Asset</button>
+  </div>
+  <!-- <div class="col-md-2">
+    <button class="btn btn-dark" data-toggle="modal" data-target="#transferAssetModal">Update Asset</button>
+  </div> -->
+  <div class="col-md-8"></div>
+</div>
+<br />
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped text-center">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Asset #</th>
+          <th scope="col">Asset Name</th>
+          <th scope="col">QR</th>
+          <!-- <th scope="col">Transaction #</th> -->
+          <th scope="col">Box ID</th>
+          <th scope="col">Consignment ID</th>
+          <th scope="col">Owner</th>
+          <th scope="col">Mfg Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let asset of assets">
+          <th scope="row">{{asset.Record.AssetNumber}}</th>
+          <td>{{asset.Record.AssetName}}</td>
+          <td>{{asset.Record.QRID}}</td>
+          <td>{{asset.Record.BoxID}}</td>
+          <td>{{asset.Record.ConsignmentID}}</td>
+          <td>{{asset.Record.Owner}}</td>
+          <td>{{asset.Record.MfgDate}}</td>          
+        <td>
+            <button class="btn btn-dark" data-toggle="modal" data-target="#transferAssetModal" (click)="generateUpdateAssetDetails(asset)">Update Asset</button>
+        </td>
+        </tr>
+        <!-- <tr >
+          <th scope="row">2</th>
+          <td>Diovan</td>
+          <td>e1nbf47ab7hahb313baB26fhsbh37rh</td>
+          <td>B176</td>
+          <td>C884</td>
+          <td>Novartis</td>
+          <td>02/02/2019</td>
+          <td>Active</td>
+          
+        <td>
+            <button class="btn btn-dark" data-toggle="modal" data-target="#transferAssetModal" (click)="generateUpdateAssetDetails()">Update Asset</button>
+        </td>
+        </tr> -->
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- Asset Modal -->
+<div class="modal fade" id="assetModal" tabindex="-1" role="dialog" aria-labelledby="assetModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="assetModalLabel">Asset Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="clearAsset()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form class="sc-form" [formGroup]="assetInEdit">
+      <div class="modal-body">
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">Asset #</div>
+          <div class="col-md-5"><input type="text" id="assetId" class="form-control" formControlName="AssetNumber" /></div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">Asset Name</div>
+          <div class="col-md-5"><input type="text" id="assetName" class="form-control" formControlName="AssetName"/></div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">QR ID</div>
+          <div class="col-md-5"><input type="text" id="qrId" class="form-control" formControlName="QRID"/></div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">Box ID</div>
+          <div class="col-md-5"><input type="text" id="boxId" class="form-control" formControlName="BoxID"/></div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">Consignment ID</div>
+          <div class="col-md-5"><input type="text" id="consgId" class="form-control" formControlName="ConsignmentID"/></div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">Owner</div>
+          <div class="col-md-5"><input type="text" id="ownerId" class="form-control"  formControlName="Owner"/></div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">Owner Role</div>
+          <div class="col-md-5"><input type="text" id="ownerRole" class="form-control" disabled formControlName="OwnerRole"/></div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">Mfg Date</div>
+          <div class="col-md-5"><input type="text" id="mfgDate" class="form-control" formControlName="MfgDate"/></div>
+          <div class="col-md-3"></div>
+        </div>
+
+      </div>
+    </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-dark" (click)="createAsset()" [attr.disabled]="assetInEdit.invalid ? true : null">Create Asset</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="transferAssetModal" tabindex="-1" role="dialog" aria-labelledby="transferAssetModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="assetModalLabel">Asset Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form class="sc-form" [formGroup]="updateAssetInEdit">
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">Asset #</div>
+          <div class="col-md-5"><input type="text" id="assetId" class="form-control" formControlName="AssetNumber"  disabled/></div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">Asset Name</div>
+          <div class="col-md-5"><input type="text" id="assetName" class="form-control" formControlName="AssetName" disabled/></div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">Owner</div>
+          <div class="col-md-5"><input type="text" id="ownerId" class="form-control"formControlName="Owner" disabled /></div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">Owner Role</div>
+          <div class="col-md-5"><input type="text" id="ownerRole" class="form-control" formControlName="OwnerRole" disabled /></div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">Distributor</div>
+          <div class="col-md-5">
+            <select id="distList" class="form-control" formControlName="Distributor">
+              <option>Select Distributor</option>
+              <option>Dist1</option>
+              <option>Dist2</option>
+              <option>Dist3</option>
+            </select>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-dark" [attr.disabled]="updateAssetInEdit.invalid ? true : null" (click)="updateAsset()">Transfer Asset</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,146 @@
+<br>
+<h3>Drug Time-Lapse</h3>
+<br>
+<br>
+<br>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-8">
+    <input type="text" class="form-control" id="searchQR" placeholder="Enter Asset Id" />
+  </div>
+  <div class="col-md-2">
+    <button class="btn btn-dark">Track Drug</button>
+  </div>
+  <div class="col-md-1"></div>
+</div>
+<br />
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <div class="timeline">
+      <div class="container1 left">
+        <div class="content">
+          <h2>Manufacturer</h2>
+          <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
+            fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea
+            eam.</p>
+        </div>
+      </div>
+      <div class="container1 right">
+        <div class="content">
+          <h2>Distributor</h2>
+          <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
+            fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea
+            eam.</p>
+        </div>
+      </div>
+      <div class="container1 left">
+        <div class="content">
+          <h2>Wholesaler</h2>
+          <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
+            fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea
+            eam.</p>
+        </div>
+      </div>
+      <div class="container1 right">
+        <div class="content">
+          <h2>Retailer</h2>
+          <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
+            fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea
+            eam.</p>
+        </div>
+      </div>
+      <!-- <div class="container1 left">
+        <div class="content">
+          <h2>2011</h2>
+          <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
+            fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea
+            eam.</p>
+        </div>
+      </div>
+      <div class="container1 right">
+        <div class="content">
+          <h2>2007</h2>
+          <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
+            fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea
+            eam.</p>
+        </div>
+      </div> -->
+    </div>
+  </div>
+  <div class="col-md-1"></div>
+</div>
+<!-- Asset Modal -->
+<div class="modal fade" id="assetModal" tabindex="-1" role="dialog" aria-labelledby="assetModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="assetModalLabel">Asset Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">Asset #</div>
+          <div class="col-md-5"><input type="text" id="assetId" class="form-control" disabled /></div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">Asset Name</div>
+          <div class="col-md-5"><input type="text" id="assetName" class="form-control" disabled /></div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">QR Code</div>
+          <div class="col-md-5"><input type="text" id="qrCode" class="form-control" disabled /></div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">Box ID</div>
+          <div class="col-md-5"><input type="text" id="boxId" class="form-control" disabled /></div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">Consignment ID</div>
+          <div class="col-md-5"><input type="text" id="boxId" class="form-control" disabled /></div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">Owner</div>
+          <div class="col-md-5"><input type="text" id="boxId" class="form-control" /></div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">Mfg Date</div>
+          <div class="col-md-5"><input type="text" id="boxId" class="form-control" disabled /></div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row form-inline">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">Exp Date</div>
+          <div class="col-md-5"><input type="text" id="boxId" class="form-control" disabled /></div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-dark">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
