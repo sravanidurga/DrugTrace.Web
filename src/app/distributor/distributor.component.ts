@@ -60,7 +60,8 @@ export class DistributorComponent implements OnInit {
       ownerrole: new FormControl(""),
       distowner: new FormControl(""),
       consignmentid : new FormControl(""),
-      wholeowner:new FormControl("", [Validators.required])
+      wholeowner:new FormControl("", [Validators.required]),
+      ownerid: new FormControl("")
 
     });
   }
@@ -73,7 +74,8 @@ export class DistributorComponent implements OnInit {
       ownerrole: new FormControl(data.ownerrole),
       distowner: new FormControl(data.distowner),
       consignmentid: new FormControl(data.consignmentid),
-      wholeowner: new FormControl(data.wholeowner, [Validators.required])
+      wholeowner: new FormControl(data.wholeowner, [Validators.required]),
+      ownerid: new FormControl(data.ownerid)
     });
   }
 

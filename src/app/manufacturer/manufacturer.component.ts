@@ -89,7 +89,8 @@ export class ManufacturerComponent implements OnInit {
       manuowner: new FormControl("", [Validators.required]),
       ownerrole: new FormControl(""),
       distowner: new FormControl("", [Validators.required]),
-      consignmentid : new FormControl("")
+      consignmentid : new FormControl(""),
+      ownerid:new FormControl("")
 
     });
   }
@@ -101,7 +102,8 @@ export class ManufacturerComponent implements OnInit {
       manuowner: new FormControl(data.manuowner, [Validators.required]),
       ownerrole: new FormControl(data.ownerrole),
       distowner: new FormControl("", [Validators.required]),
-      consignmentid: new FormControl(data.consignmentid)
+      consignmentid: new FormControl(data.consignmentid),
+      ownerid: new FormControl(data.ownerid)
     });
   }
 
