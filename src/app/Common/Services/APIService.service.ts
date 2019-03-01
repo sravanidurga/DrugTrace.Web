@@ -11,7 +11,7 @@ export class APIService {
     constructor(private httpClient: HttpClient) { }
     
 
-    getManifacturerSaleHistory(asset): Observable<Array<APIResponseModel>> {
+    getManifacturerSaleHistory(): Observable<Array<APIResponseModel>> {
         var params = new HttpParams()
          params = params.append('peer', 'peer0.manu.example.com')
          params = params.append('args', '')

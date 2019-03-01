@@ -46,10 +46,20 @@ export class ManufacturerComponent implements OnInit {
   ngOnInit() {
     this.assetInEdit = this.generateAssetFormGroup();
     this.updateAssetInEdit = this.generateUpdateAssetFormGroup();
-    
+    this.getAssets();
     this.assets.push({Key:"Test","Record":this.sampleAsset})
+    
   }
 
+  getAssets(){
+    this.apiService.getManifacturerSaleHistory().subscribe((data) => {
+         this.assets = data;  
+    },
+    (err) => {
+      console.log(err);
+    }
+  );
+  }
   get assetFormGroup() { return this.assetInEdit.controls; }
 
   generateAssetFormGroup() {
