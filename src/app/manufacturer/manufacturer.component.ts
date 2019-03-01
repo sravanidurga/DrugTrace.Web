@@ -22,12 +22,12 @@ export class ManufacturerComponent implements OnInit {
   public assets : Array<APIResponseModel> = [];
 
   sampleAsset : AssetModel = new AssetModel({
-    AssetNumber :2,
-    AssetName : "Diovan",
-    QRID:"e1nbf47ab7hahb313baB26fhsbh37rh",
-    BoxID : "B176",
-    ConsignmentID:"C884",
-    Owner:"Novartis",
+    assetid :2,
+    assetname : "Diovan",
+    qrid:"e1nbf47ab7hahb313baB26fhsbh37rh",
+    boxid : "B176",
+    consignmentid:"C884",
+    manuowner:"Novartis",
     MfgDate:"02/02/2019"
   });
 
@@ -65,13 +65,13 @@ export class ManufacturerComponent implements OnInit {
   generateAssetFormGroup() {
     return new FormGroup({
 
-      AssetNumber: new FormControl(0),
-      AssetName: new FormControl("", [Validators.required]),
-      QRID: new FormControl("", [Validators.required]),
-      BoxID: new FormControl("", [Validators.required]),
-      ConsignmentID: new FormControl("", [Validators.required]),
-      Owner: new FormControl("", [Validators.required]),
-      OwnerRole: new FormControl(""),
+      assetid: new FormControl(0),
+      assetname: new FormControl("", [Validators.required]),
+      qrid: new FormControl("", [Validators.required]),
+      boxid: new FormControl("", [Validators.required]),
+      consignmentid: new FormControl("", [Validators.required]),
+      manuowner: new FormControl("", [Validators.required]),
+      ownerrole: new FormControl(""),
       MfgDate: new FormControl(new Date())
 
     });
@@ -79,13 +79,13 @@ export class ManufacturerComponent implements OnInit {
 
   generateAssetEditFormGroup(data) {
     return new FormGroup({
-      AssetNumber: new FormControl(data.AssetNumber),
-      AssetName: new FormControl(data.AssetName, [Validators.required]),
-      QRID: new FormControl(data.QRID, [Validators.required]),
-      BoxID: new FormControl(data.BoxID, [Validators.required]),
-      ConsignmentID: new FormControl(data.ConsignmentID, [Validators.required]),
-      Owner: new FormControl(data.Owner, [Validators.required]),
-      OwnerRole: new FormControl(data.OwnerRole),
+      assetid: new FormControl(data.assetid),
+      assetname: new FormControl(data.assetname, [Validators.required]),
+      qrid: new FormControl(data.QRID, [Validators.required]),
+      boxid: new FormControl(data.BoxID, [Validators.required]),
+      consignmentid: new FormControl(data.ConsignmentID, [Validators.required]),
+      manuowner: new FormControl(data.Owner, [Validators.required]),
+      ownerrole: new FormControl(data.OwnerRole),
       MfgDate: new FormControl(data.MfgDate, [Validators.required])
     });
   }
@@ -94,22 +94,22 @@ export class ManufacturerComponent implements OnInit {
   generateUpdateAssetFormGroup() {
     return new FormGroup({
 
-      AssetNumber: new FormControl(0),
-      AssetName: new FormControl("", [Validators.required]),
-      Owner: new FormControl("", [Validators.required]),
-      OwnerRole: new FormControl(""),
-      Distributor: new FormControl("", [Validators.required])
+      assetid: new FormControl(0),
+      assetname: new FormControl("", [Validators.required]),
+      manuowner: new FormControl("", [Validators.required]),
+      ownerrole: new FormControl(""),
+      distowner: new FormControl("", [Validators.required])
 
     });
   }
 
   generateUpdateAssetEditFormGroup(data) {
     return new FormGroup({
-      AssetNumber: new FormControl(data.AssetNumber),
-      AssetName: new FormControl(data.AssetName, [Validators.required]),
-      Owner: new FormControl(data.Owner, [Validators.required]),
-      OwnerRole: new FormControl(data.OwnerRole),
-      Distributor: new FormControl("", [Validators.required])
+      assetid: new FormControl(data.assetid),
+      assetname: new FormControl(data.assetname, [Validators.required]),
+      manuowner: new FormControl(data.manuowner, [Validators.required]),
+      ownerrole: new FormControl(data.ownerrole),
+      distowner: new FormControl("", [Validators.required])
     });
   }
 
@@ -134,11 +134,11 @@ export class ManufacturerComponent implements OnInit {
   }
 
   updateAsset(){
-    this.updateAssetModel.AssetNumber = this.assetInEdit.get("AssetNumber").value;
-    this.updateAssetModel.AssetName = this.assetInEdit.get("AssetName").value;
-    this.updateAssetModel.Owner = this.assetInEdit.get("Owner").value;
-    this.updateAssetModel.OwnerRole = this.assetInEdit.get("OwnerRole").value;
-    this.updateAssetModel.Distributor = this.assetInEdit.get("Distributor").value;
+    this.updateAssetModel.assetid = this.assetInEdit.get("assetid").value;
+    this.updateAssetModel.assetname = this.assetInEdit.get("assetname").value;
+    this.updateAssetModel.manuowner = this.assetInEdit.get("manuowner").value;
+    this.updateAssetModel.ownerrole= this.assetInEdit.get("ownerrole").value;
+    this.updateAssetModel.distowner = this.assetInEdit.get("distowner").value;
     this.apiService.updateAssetManifacturer(this.updateAssetModel).subscribe((data) => {
       this.submitted = false;   
       this.toastr.success('ASSET UPDATED SUCCESSFULLY');     
@@ -152,19 +152,19 @@ export class ManufacturerComponent implements OnInit {
   }
 
   clearAsset(){
-    if(this.asset.AssetNumber == ""){
+    if(this.asset.assetid == ""){
       this.assetInEdit = this.generateAssetFormGroup();
     }
   }
 
   prepareAssetModel(){
-   // this.asset.AssetNumber = this.assetInEdit.get("AssetNumber").value;
-    this.asset.AssetName = this.assetInEdit.get("AssetName").value;
-    this.asset.QRID = this.assetInEdit.get("QRID").value;
-    this.asset.BoxID = this.assetInEdit.get("BoxID").value;
-    this.asset.ConsignmentID = this.assetInEdit.get("ConsignmentID").value;
-    this.asset.Owner = this.assetInEdit.get("Owner").value;
-    this.asset.OwnerRole = this.assetInEdit.get("OwnerRole").value;
+   // this.asset.assetid = this.assetInEdit.get("assetid").value;
+    this.asset.assetname = this.assetInEdit.get("assetname").value;
+    this.asset.qrid = this.assetInEdit.get("qrid").value;
+    this.asset.boxid = this.assetInEdit.get("boxid").value;
+    this.asset.consignmentid = this.assetInEdit.get("consignmentid").value;
+    this.asset.manuowner = this.assetInEdit.get("manuowner").value;
+    this.asset.ownerrole= this.assetInEdit.get("OwnerRole").value;
     this.asset.MfgDate = this.assetInEdit.get("MfgDate").value;
   }
 

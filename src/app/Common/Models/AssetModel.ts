@@ -9,12 +9,18 @@ export class AssetModel {
 
         }
     }
-    AssetNumber: string;
-    AssetName: string;
-    QRID: string;
-    BoxID: string;
-    ConsignmentID: string;
-    Owner: string;
-    OwnerRole: string;
-    MfgDate: Date;
+    CustomerOwner: string ;
+    MfgDate: string ;
+    RetailerOwner: string ;
+    assetid:string ;
+    assetname: string ;
+    boxid: string ;
+    consignmentid: string ;
+    customerphone: string ;
+    distowner: string ;
+    manuowner: string ;
+    ownerid: string ;
+    ownerrole: string ;
+    qrid: string ;
+    wholeowner: string;
 }

@@ -9,9 +9,9 @@ export class ManifacturerUpdateAssetModel {
 
         }
     }
-    AssetNumber: string;
-    AssetName: string;
-    Owner: string;
-    OwnerRole: string;
-    Distributor: string;
+    assetid:string ;
+    assetname: string ;
+    manuowner: string ;
+    ownerrole: string ;
+    distowner: string ;
 }

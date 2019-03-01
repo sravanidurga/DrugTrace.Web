@@ -23,7 +23,7 @@ export class APIService {
         var params = new HttpParams()
         // params = params.append('provider', provider)
         // params = params.append('isEdit', isEdit.toString())
-        var body = { "peers": [], "args":[asset.AssetName,asset.QRID,asset.BoxID,asset.ConsignmentID,asset.Owner,asset.MfgDate.toDateString()]}
+        var body = { "peers": [], "args":[asset.assetname,asset.qrid,asset.boxid,asset.consignmentid,asset.manuowner,asset.MfgDate.toString()]}
         return this.httpClient.post<string>('manu_creation', body);
     }
 
@@ -32,7 +32,7 @@ export class APIService {
         var params = new HttpParams()
         // params = params.append('provider', provider)
         // params = params.append('isEdit', isEdit.toString())
-        var body = { "peers": [], "args":[asset.Owner,asset.Distributor,""]}
+        var body = { "peers": [], "args":[asset.manuowner,asset.distowner,""]}
         return this.httpClient.post<string>('manu_creation', body);
     }
 

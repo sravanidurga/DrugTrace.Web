@@ -28,12 +28,12 @@
       </thead>
       <tbody>
         <tr *ngFor="let asset of assets">
-          <th scope="row">{{asset.Record.AssetNumber}}</th>
-          <td>{{asset.Record.AssetName}}</td>
-          <td>{{asset.Record.QRID}}</td>
-          <td>{{asset.Record.BoxID}}</td>
-          <td>{{asset.Record.ConsignmentID}}</td>
-          <td>{{asset.Record.Owner}}</td>
+          <th scope="row">{{asset.Record.assetid}}</th>
+          <td>{{asset.Record.assetname}}</td>
+          <td>{{asset.Record.qrid}}</td>
+          <td>{{asset.Record.boxid}}</td>
+          <td>{{asset.Record.consignmentid}}</td>
+          <td>{{asset.Record.manuowner}}</td>
           <td>{{asset.Record.MfgDate}}</td>          
         <td>
             <button class="btn btn-dark" data-toggle="modal" data-target="#transferAssetModal" (click)="generateUpdateAssetDetails(asset)">Update Asset</button>
@@ -72,49 +72,49 @@
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Asset #</div>
-          <div class="col-md-5"><input type="text" id="assetId" class="form-control" formControlName="AssetNumber" /></div>
+          <div class="col-md-5"><input type="text" id="assetId" class="form-control" formControlName="assetid" /></div>
           <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Asset Name</div>
-          <div class="col-md-5"><input type="text" id="assetName" class="form-control" formControlName="AssetName"/></div>
+          <div class="col-md-5"><input type="text" id="assetName" class="form-control" formControlName="assetname"/></div>
           <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">QR ID</div>
-          <div class="col-md-5"><input type="text" id="qrId" class="form-control" formControlName="QRID"/></div>
+          <div class="col-md-5"><input type="text" id="qrId" class="form-control" formControlName="qrid"/></div>
           <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Box ID</div>
-          <div class="col-md-5"><input type="text" id="boxId" class="form-control" formControlName="BoxID"/></div>
+          <div class="col-md-5"><input type="text" id="boxId" class="form-control" formControlName="boxid"/></div>
           <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Consignment ID</div>
-          <div class="col-md-5"><input type="text" id="consgId" class="form-control" formControlName="ConsignmentID"/></div>
+          <div class="col-md-5"><input type="text" id="consgId" class="form-control" formControlName="consignmentid"/></div>
           <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Owner</div>
-          <div class="col-md-5"><input type="text" id="ownerId" class="form-control"  formControlName="Owner"/></div>
+          <div class="col-md-5"><input type="text" id="ownerId" class="form-control"  formControlName="manuowner"/></div>
           <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Owner Role</div>
-          <div class="col-md-5"><input type="text" id="ownerRole" class="form-control" disabled formControlName="OwnerRole"/></div>
+          <div class="col-md-5"><input type="text" id="ownerRole" class="form-control" disabled formControlName="ownerrole"/></div>
           <div class="col-md-3"></div>
         </div>
         <br>
@@ -149,28 +149,28 @@
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Asset #</div>
-          <div class="col-md-5"><input type="text" id="assetId" class="form-control" formControlName="AssetNumber"  disabled/></div>
+          <div class="col-md-5"><input type="text" id="assetId" class="form-control" formControlName="assetid"  disabled/></div>
           <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Asset Name</div>
-          <div class="col-md-5"><input type="text" id="assetName" class="form-control" formControlName="AssetName" disabled/></div>
+          <div class="col-md-5"><input type="text" id="assetName" class="form-control" formControlName="assetname" disabled/></div>
           <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Owner</div>
-          <div class="col-md-5"><input type="text" id="ownerId" class="form-control"formControlName="Owner" disabled /></div>
+          <div class="col-md-5"><input type="text" id="ownerId" class="form-control"formControlName="manuowner" disabled /></div>
           <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Owner Role</div>
-          <div class="col-md-5"><input type="text" id="ownerRole" class="form-control" formControlName="OwnerRole" disabled /></div>
+          <div class="col-md-5"><input type="text" id="ownerRole" class="form-control" formControlName="ownerrole" disabled /></div>
           <div class="col-md-3"></div>
         </div>
         <br>
@@ -178,7 +178,7 @@
           <div class="col-md-1"></div>
           <div class="col-md-3">Distributor</div>
           <div class="col-md-5">
-            <select id="distList" class="form-control" formControlName="Distributor">
+            <select id="distList" class="form-control" formControlName="distowner">
               <option>Select Distributor</option>
               <option>Dist1</option>
               <option>Dist2</option>
