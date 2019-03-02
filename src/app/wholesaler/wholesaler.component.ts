@@ -32,7 +32,7 @@ export class WholesalerComponent implements OnInit {
   }
 
   getAssets(){
-    this.apiService.getDistributorSaleHistory().subscribe((data) => {
+    this.apiService.getWholesalerSaleHistory().subscribe((data) => {
       console.log(data);
       var text = data.split("[")[1].split("]")[0];
      // alert(JSON.parse("["+text+"]"));
@@ -90,7 +90,7 @@ export class WholesalerComponent implements OnInit {
     this.updateAssetModel.wholeowner = this.updateAssetInEdit.get("wholeowner").value;
     this.updateAssetModel.RetailerOwner = this.updateAssetInEdit.get("RetailerOwner").value;
 
-    this.apiService.updateAssetDistributor(this.updateAssetModel).subscribe((data) => {
+    this.apiService.updateAssetWholeSaler(this.updateAssetModel).subscribe((data) => {
       this.submitted = false;   
       this.toastr.success('ASSET UPDATED SUCCESSFULLY');     
     },

@@ -59,6 +59,24 @@ export class APIService {
         return this.httpClient.post<string>('dist_sale_transaction', body);
     }
 
+    getWholesalerSaleHistory(): Observable<any> {
+        var params = new HttpParams()
+         params = params.append('peer', 'peer0.manu.example.com')
+         params = params.append('args', JSON.stringify(['prabhu']))
+        return this.httpClient.get<any>('SaleHistory_Wsale', { params: params });
+    }
+
+
+    updateAssetWholeSaler(asset:AssetModel): Observable<string> {
+        
+        var params = new HttpParams()
+        // params = params.append('provider', provider)
+        // params = params.append('isEdit', isEdit.toString())
+        var body = { "peers": ['peer0.manu.example.com'], "args":[asset.RetailerOwner,asset.wholeowner,asset.consignmentid]}
+        console.log(body);
+        return this.httpClient.post<string>('ws_sale_transaction', body);
+    }
+
 
 
 
