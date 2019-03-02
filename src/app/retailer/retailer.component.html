@@ -22,29 +22,21 @@
           <th scope="col">Consignment ID</th>
           <th scope="col">Owner</th>
           <th scope="col">Mfg Date</th>
-          <th scope="col">Status</th>
+          <!-- <th scope="col">Actions</th> -->
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Lymparza</td>
-          <td>B26fhsbh37rh41nbf47ab7hahb313ba</td>
-          <td>B126</td>
-          <td>C432</td>
-          <td>AstraZeneca</td>
-          <td>14/05/2018</td>
-          <td>Active</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Diovan</td>
-          <td>e1nbf47ab7hahb313baB26fhsbh37rh</td>
-          <td>B176</td>
-          <td>C884</td>
-          <td>Novartis</td>
-          <td>02/02/2019</td>
-          <td>Active</td>
+        <tr *ngFor="let asset of assets">
+          <th scope="row">{{asset.Record.assetid}}</th>
+          <td>{{asset.Record.assetname}}</td>
+          <td>{{asset.Record.qrid}}</td>
+          <td>{{asset.Record.boxid}}</td>
+          <td>{{asset.Record.consignmentid}}</td>
+          <td>{{asset.Record.RetailerOwner}}</td>
+          <td>{{asset.Record.MfgDate}}</td>          
+        <!-- <td>
+            <button class="btn btn-dark" data-toggle="modal" data-target="#transferAssetModal" (click)="generateUpdateAssetDetails(asset)">Update Asset</button>
+        </td> -->
         </tr>
       </tbody>
     </table>
