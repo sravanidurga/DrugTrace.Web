@@ -6,10 +6,10 @@
 <div class="row">
   <div class="col-md-1"></div>
   <div class="col-md-8">
-    <input type="text" class="form-control" id="searchQR" placeholder="Enter Asset Id" />
+    <input type="text" class="form-control" id="searchQR" placeholder="Enter Asset Id" [(ngModel)]="assetId"/>
   </div>
   <div class="col-md-2">
-    <button class="btn btn-dark">Track Drug</button>
+    <button class="btn btn-dark"(click)="scanAsset()">Track Drug</button>
   </div>
   <div class="col-md-1"></div>
 </div>
@@ -18,36 +18,72 @@
   <div class="col-md-1"></div>
   <div class="col-md-10">
     <div class="timeline">
-      <div class="container1 left">
+      <div class="container1 left" *ngIf="assets[0] != undefined">
         <div class="content">
           <h2>Manufacturer</h2>
-          <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
-            fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea
-            eam.</p>
+          <p>
+            Asset# - {{assets[0].Value.assetid}}
+          </p>
+          <p>
+            Asset Name - {{assets[0].Value.assetname}}
+          </p>
+          <p>
+            Owner - {{assets[0].Value.ownerid}}
+          </p>
+          <p>
+            Timestamp - {{assets[0].Timestamp| date: 'dd/MM/yyyy hh:mm:ss'}}
+          </p>
         </div>
       </div>
-      <div class="container1 right">
+      <div class="container1 right" *ngIf="assets[1] != undefined">
         <div class="content">
           <h2>Distributor</h2>
-          <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
-            fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea
-            eam.</p>
+          <p>
+              Asset# - {{assets[1].Value.assetid}}
+            </p>
+            <p>
+              Asset Name - {{assets[1].Value.assetname}}
+            </p>
+            <p>
+              Owner - {{assets[1].Value.ownerid}}
+            </p>
+            <p>
+              Timestamp - {{assets[1].Timestamp| date: 'dd/MM/yyyy hh:mm:ss'}}
+            </p>
         </div>
       </div>
-      <div class="container1 left">
+      <div class="container1 left" *ngIf="assets[2] != undefined">
         <div class="content">
           <h2>Wholesaler</h2>
-          <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
-            fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea
-            eam.</p>
+          <p>
+              Asset# - {{assets[2].Value.assetid}}
+            </p>
+            <p>
+              Asset Name - {{assets[2].Value.assetname}}
+            </p>
+            <p>
+              Owner - {{assets[2].Value.ownerid}}
+            </p>
+            <p>
+              Timestamp - {{assets[2].Timestamp| date: 'dd/MM/yyyy HH:mm:ss'}}
+            </p>
         </div>
       </div>
-      <div class="container1 right">
+      <div class="container1 right" *ngIf="assets[3] != undefined">
         <div class="content">
           <h2>Retailer</h2>
-          <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
-            fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea
-            eam.</p>
+          <p>
+              Asset# - {{assets[3].Value.assetid}}
+            </p>
+            <p>
+              Asset Name - {{assets[3].Value.assetname}}
+            </p>
+            <p>
+              Owner - {{assets[3].Value.ownerid}}
+            </p>
+            <p>
+              Timestamp - {{assets[3].Timestamp| date: 'dd/MM/yyyy hh:mm:ss'}}
+            </p>
         </div>
       </div>
       <!-- <div class="container1 left">
@@ -84,56 +120,72 @@
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Asset #</div>
-          <div class="col-md-5"><input type="text" id="assetId" class="form-control" disabled /></div>
+          <div class="col-md-5">
+            <input type="text" id="assetId" class="form-control" disabled />
+          </div>
           <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Asset Name</div>
-          <div class="col-md-5"><input type="text" id="assetName" class="form-control" disabled /></div>
+          <div class="col-md-5">
+            <input type="text" id="assetName" class="form-control" disabled />
+          </div>
           <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">QR Code</div>
-          <div class="col-md-5"><input type="text" id="qrCode" class="form-control" disabled /></div>
+          <div class="col-md-5">
+            <input type="text" id="qrCode" class="form-control" disabled />
+          </div>
           <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Box ID</div>
-          <div class="col-md-5"><input type="text" id="boxId" class="form-control" disabled /></div>
+          <div class="col-md-5">
+            <input type="text" id="boxId" class="form-control" disabled />
+          </div>
           <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Consignment ID</div>
-          <div class="col-md-5"><input type="text" id="boxId" class="form-control" disabled /></div>
+          <div class="col-md-5">
+            <input type="text" id="boxId" class="form-control" disabled />
+          </div>
           <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Owner</div>
-          <div class="col-md-5"><input type="text" id="boxId" class="form-control" /></div>
+          <div class="col-md-5">
+            <input type="text" id="boxId" class="form-control" />
+          </div>
           <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Mfg Date</div>
-          <div class="col-md-5"><input type="text" id="boxId" class="form-control" disabled /></div>
+          <div class="col-md-5">
+            <input type="text" id="boxId" class="form-control" disabled />
+          </div>
           <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row form-inline">
           <div class="col-md-1"></div>
           <div class="col-md-3">Exp Date</div>
-          <div class="col-md-5"><input type="text" id="boxId" class="form-control" disabled /></div>
+          <div class="col-md-5">
+            <input type="text" id="boxId" class="form-control" disabled />
+          </div>
           <div class="col-md-3"></div>
         </div>
       </div>

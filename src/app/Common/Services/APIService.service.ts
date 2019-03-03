@@ -62,7 +62,7 @@ export class APIService {
     getWholesalerSaleHistory(): Observable<any> {
         var params = new HttpParams()
          params = params.append('peer', 'peer0.manu.example.com')
-         params = params.append('args', JSON.stringify(['prabhu']))
+         params = params.append('args', JSON.stringify(['nitesh']))
         return this.httpClient.get<any>('SaleHistory_Wsale', { params: params });
     }
 
@@ -72,9 +72,25 @@ export class APIService {
         var params = new HttpParams()
         // params = params.append('provider', provider)
         // params = params.append('isEdit', isEdit.toString())
-        var body = { "peers": ['peer0.manu.example.com'], "args":[asset.RetailerOwner,asset.wholeowner,asset.consignmentid]}
+        var body = { "peers": ['peer0.manu.example.com'], "args":[asset.RetailerOwner,asset.wholeowner,asset.boxid]}
         console.log(body);
         return this.httpClient.post<string>('ws_sale_transaction', body);
+    }
+
+    getRetailerSaleHistory() : Observable<any>{
+
+        var params = new HttpParams()
+         params = params.append('peer', 'peer0.manu.example.com')
+         params = params.append('args', JSON.stringify(['sai']))
+        return this.httpClient.get<any>('SaleHistory_Ratail', { params: params });
+       
+    }
+
+    scanAsset(assetId): Observable<any>{       
+        var params = new HttpParams()
+         params = params.append('peer', 'peer0.manu.example.com')
+         params = params.append('args', JSON.stringify([assetId]))
+        return this.httpClient.get<any>('Scan_Asset', { params: params });
     }
 
 

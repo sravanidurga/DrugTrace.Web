@@ -28,7 +28,7 @@
             req = req.clone({ url: config.BASE_URL + req.url });
             if (req.url.indexOf("login") === -1) {
 
-                var token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTE0OTU3NTgsInVzZXJuYW1lIjoicGIzIiwib3JnTmFtZSI6Im1hbnUiLCJpYXQiOjE1NTE0NTk3NTh9.WyyDQrQU-fl31ubFMPaGytA1VTEAcnfaWN7ckNQ7qWo';
+                var token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTE2NTY4MTcsInVzZXJuYW1lIjoic3JhdmFuaSIsIm9yZ05hbWUiOiJtYW51IiwiaWF0IjoxNTUxNjIwODE3fQ.3jsNa9qoOKvJ41jSWSFqoNV8FUEfKf0l4Zck5ZXAEFg';
 
                 req = req.clone({
                     headers: req.headers.set('authorization', token),

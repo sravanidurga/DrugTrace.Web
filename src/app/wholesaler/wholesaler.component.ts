@@ -58,6 +58,7 @@ export class WholesalerComponent implements OnInit {
       ownerrole: new FormControl(""),
       distowner: new FormControl(""),
       consignmentid : new FormControl(""),
+      boxid: new FormControl(""),
       wholeowner:new FormControl(""),
       ownerid: new FormControl(""),
       RetailerOwner : new FormControl("",[Validators.required])
@@ -73,6 +74,7 @@ export class WholesalerComponent implements OnInit {
       ownerrole: new FormControl(data.ownerrole),
       distowner: new FormControl(data.distowner),
       consignmentid: new FormControl(data.consignmentid),
+      boxid: new FormControl(data.boxid),
       wholeowner: new FormControl(data.wholeowner, [Validators.required]),
       ownerid: new FormControl(data.ownerid),
       RetailerOwner : new FormControl(data.RetailerOwner,[Validators.required])
@@ -87,6 +89,7 @@ export class WholesalerComponent implements OnInit {
     this.updateAssetModel.ownerrole= this.updateAssetInEdit.get("ownerrole").value;
     this.updateAssetModel.distowner = this.updateAssetInEdit.get("distowner").value;
     this.updateAssetModel.consignmentid = this.updateAssetInEdit.get("consignmentid").value;
+    this.updateAssetModel.boxid = this.updateAssetInEdit.get("boxid").value;
     this.updateAssetModel.wholeowner = this.updateAssetInEdit.get("wholeowner").value;
     this.updateAssetModel.RetailerOwner = this.updateAssetInEdit.get("RetailerOwner").value;
 

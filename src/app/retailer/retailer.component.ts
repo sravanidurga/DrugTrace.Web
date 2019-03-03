@@ -24,7 +24,7 @@ export class RetailerComponent implements OnInit {
   }
 
   getAssets(){
-    this.apiService.getDistributorSaleHistory().subscribe((data) => {
+    this.apiService.getRetailerSaleHistory().subscribe((data) => {
       console.log(data);
       var text = data.split("[")[1].split("]")[0];
      // alert(JSON.parse("["+text+"]"));
