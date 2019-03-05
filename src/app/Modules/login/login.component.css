@@ -1,0 +1,78 @@
+/*************** Globals : Buttons End ******************/
+/******************** LOGIN BOX START *********************/
+.login-box-container{
+    display: table;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+	background-repeat: no-repeat;
+	background-position: center bottom;
+    background-size: cover;
+    /* background-color: #343a40!important; */
+    
+}
+.login-box-container > .login-box{
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+    text-align: center;
+}
+.login-box-container .login-box-content{
+    max-width: 400px;
+    width: 100%;
+    display: inline-block;
+    padding: 24px;
+    padding-bottom: 40px;
+    border-radius: 0 ;
+    height: auto;
+    background-color: #fff;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2),0px 2px 54px 0px rgba(47, 72, 96, 0.54);
+}
+.scba-login-form.collapse.in ~ .scba-login-forgot-password .scba-forgot-password:before{
+    content:"Forgot Password? Click here";
+}
+.scba-login-form.collapse .scba-login-forgot-password .scba-forgot-password:before,.scba-login-form.collapsing .scba-login-forgot-password .scba-forgot-password:before{
+    content:"Already have a Login? Click here";
+}
+.scba-forgot-password{
+    margin: 6px 0;
+    display: inline-block;
+}
+.scba-login-store{
+    color: #fff;
+    font-size: 32px;
+    height: 60px;
+    line-height: 60px;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.scba-login-store > img{
+    max-width: 80%;
+}
+.scba-login-form h3{
+    padding: 16px 0;
+    margin-top: 24px;
+    margin-bottom: 0;
+    border-bottom: none;
+    text-align: left;
+    color: #5f7286;
+    border-top: solid 1px #ced4da;
+}
+.hasBtn {
+    position: relative;
+}
+.hasBtn > .form-control {
+    padding-right: 34%;
+}
+.hasBtn > .loginbtn {
+    position: absolute !important;
+    top: 0px;
+    right: 0px;
+    width: 30%;
+    border-radius: 0px 4px 4px 0px;
+}
+

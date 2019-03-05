@@ -15,6 +15,7 @@ import { APIService } from './Common/Services/APIService.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { RequestInterceptor } from './Common/Services/HttpInterceptor';
+import { AuthGuard } from './Common/Services/authguard.service';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,8 @@ import { RequestInterceptor } from './Common/Services/HttpInterceptor';
       }
     ),
     RouterModule.forRoot([
+
+      { path: 'login', loadChildren: './Modules/login/login.module#LoginModule'},
       {
         path:'manufacturer', component:ManufacturerComponent
       },

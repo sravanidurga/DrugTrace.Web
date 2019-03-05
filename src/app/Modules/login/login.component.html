@@ -1,0 +1,29 @@
+<title>Super Admin Login</title>
+<div class="login-box-container">
+  <div class="login-box">
+      <div class="login-box-content">
+          <!-- <div class="scba-login-store"><img src="https://az777500.vo.msecnd.net/images/2397/bitmap2x.png" alt="Image"></div> -->
+          <div>
+              <form [formGroup]="loginForm" (ngSubmit)="login()">
+                  <h3>Welcome, Please Sign In</h3>
+                  <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Username" formControlName="userName" [ngClass]="{ 'has-error': (submitted && loginFormGroup.userName.errors)||(loginFormGroup.userName.touched && loginFormGroup.userName.errors) }">
+                      <div *ngIf="(submitted && loginFormGroup.userName.errors)||(loginFormGroup.userName.touched && loginFormGroup.userName.errors)"
+                      class="validationMessage">
+                      <div *ngIf="loginFormGroup.userName.errors.required">Username IS REQUIRED</div>
+                  </div>
+                  </div>
+                  <div class="form-group hasBtn">
+                      <input type="password" class="form-control" placeholder="Password" formControlName="password" [ngClass]="{ 'has-error': (submitted && loginFormGroup.password.errors)||(loginFormGroup.password.touched && loginFormGroup.password.errors) }">
+                      <div *ngIf="(submitted && loginFormGroup.password.errors)||(loginFormGroup.password.touched && loginFormGroup.password.errors)"
+                      class="validationMessage">
+                      <div *ngIf="loginFormGroup.password.errors.required">Password IS REQUIRED</div>
+                    
+                      </div>
+                  </div>
+                  <button type="submit" class="btn loginbtn btn-primary">Sign In</button>
+              </form>                            
+          </div>
+      </div>
+  </div>
+</div>
